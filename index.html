@@ -11,7 +11,6 @@
         margin-top: 50px;
       }
       #countdown {
-        font-size: 2rem;
         color: #308BCF;
       }
     </style>
@@ -29,6 +28,7 @@
         const diff = targetDate - now;
 
         if (diff <= 0) {
+          countdownEl.style.fontSize = '40px';
           countdownEl.textContent = "The countdown is over!";
           clearInterval(timer);
           return;
@@ -41,6 +41,7 @@
 
         countdownEl.textContent = 
           `${days}d ${hours}h ${minutes}m ${seconds}s`;
+          countdownEl.style.fontSize = `${days}px`;
       }
 
       updateCountdown();
