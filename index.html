@@ -27,7 +27,7 @@
       function updateCountdown() {
         const now = new Date();
         const diff = targetDate - now;
-        console.log(targetDate, now, diff);
+
         if (diff <= 0) {
           countdownEl.textContent = "The countdown is over!";
           clearInterval(timer);
