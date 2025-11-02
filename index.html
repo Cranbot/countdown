@@ -20,14 +20,14 @@
     <h1>Countdown</h1>
     <div id="countdown"></div>
     <script>
-      // Set the target date
-      const targetDate = new Date('2026-06-26T00:00:00');
+      // Set the target date - June 26, 2026, 01:00 AM
+      const targetDate = new Date('2026-06-26T01:00:00');
       const countdownEl = document.getElementById('countdown');
 
       function updateCountdown() {
         const now = new Date();
         const diff = targetDate - now;
-
+        console.log(targetDate, now, diff);
         if (diff <= 0) {
           countdownEl.textContent = "The countdown is over!";
           clearInterval(timer);
