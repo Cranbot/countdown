@@ -5,31 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Countdown Timer</title>
     <style>
+      .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 20px;
+      }
+      div {
+        border: #308BCF 2px solid;
+      }
+
       body {
         font-family: Arial, sans-serif;
         text-align: center;
         margin-top: 50px;
       }
-      #countdown {
+      .countdown {
         color: #308BCF;
+      }
+
+      @media screen and (max-width: 600px) {
+        .container {
+          flex-direction: column;
+          align-items: center;
+        }
+        
       }
     </style>
 </head>
 <body>
     <h1>Countdown</h1>
-    <div id="countdown"></div>
+    <container class="container">
+      <div id="countdown-day" class="countdown"></div>
+      <div id="countdown-hour" class="countdown"></div>
+      <div id="countdown-minute" class="countdown"></div>
+      <div id="countdown-second" class="countdown"></div>
+    </container>
+    
     <script>
       // Set the target date - June 26, 2026, 01:00 AM
       const targetDate = new Date('2026-06-26T01:00:00');
-      const countdownEl = document.getElementById('countdown');
+      const countdownDayEl = document.getElementById('countdown-day');
+      const countdownHourEl = document.getElementById('countdown-hour');
+      const countdownMinuteEl = document.getElementById('countdown-minute');
+      const countdownSecondEl = document.getElementById('countdown-second');
 
       function updateCountdown() {
         const now = new Date();
         const diff = targetDate - now;
 
         if (diff <= 0) {
-          countdownEl.style.fontSize = '40px';
-          countdownEl.textContent = "The countdown is over!";
+          countdownDayEl.style.fontSize = '40px';
+          countdownDayEl.textContent = "The countdown is over!";
           clearInterval(timer);
           return;
         }
@@ -39,9 +66,15 @@
         const minutes = Math.floor((diff / (1000 * 60)) % 60);
         const seconds = Math.floor((diff / 1000) % 60);
 
-        countdownEl.textContent = 
-          `${days}d ${hours}h ${minutes}m ${seconds}s`;
-          countdownEl.style.fontSize = `${days}px`;
+        countdownDayEl.textContent = `${days}`;
+        countdownHourEl.textContent = `${hours}`;
+        countdownMinuteEl.textContent = `${minutes}`;
+        countdownSecondEl.textContent = `${seconds}`;
+
+        countdownDayEl.style.fontSize = `${days}px`;
+        countdownHourEl.style.fontSize = `${days}px`;
+        countdownMinuteEl.style.fontSize = `${days}px`;
+        countdownSecondEl.style.fontSize = `${days}px`;
       }
 
       updateCountdown();
