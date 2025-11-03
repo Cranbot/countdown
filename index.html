@@ -66,15 +66,19 @@
         const minutes = Math.floor((diff / (1000 * 60)) % 60);
         const seconds = Math.floor((diff / 1000) % 60);
 
-        countdownDayEl.textContent = `${days}`;
-        countdownHourEl.textContent = `${hours}`;
-        countdownMinuteEl.textContent = `${minutes}`;
-        countdownSecondEl.textContent = `${seconds}`;
+        updateElement(countdownDayEl, `${days}`, days);
+        updateElement(countdownHourEl, `${hours}`, days);
+        updateElement(countdownMinuteEl, `${minutes}`, days);
+        updateElement(countdownSecondEl, `${seconds}`, days);
+      }
 
-        countdownDayEl.style.fontSize = `${days}px`;
-        countdownHourEl.style.fontSize = `${days}px`;
-        countdownMinuteEl.style.fontSize = `${days}px`;
-        countdownSecondEl.style.fontSize = `${days}px`;
+      function updateElement(element, text, size) {
+        element.textContent = padZero(text);
+        element.style.fontSize = `${size}px`;
+      }
+
+      function padZero(num) {
+        return num.toString().padStart(2, '0');
       }
 
       updateCountdown();
